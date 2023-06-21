@@ -16,7 +16,6 @@ export const MovieDetails = () => {
       setLoading(true);
       try {
         const details = await getMovieDetails(movieId);
-        console.log(details);
         setMovieInfo(details);
         setLoading(false);
       } catch (error) {
