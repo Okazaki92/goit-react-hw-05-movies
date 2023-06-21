@@ -3,6 +3,7 @@ import { useLocation, Link, useParams, Outlet } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { Loader } from "../../components/Loader/Loader";
 import { getMovieDetails } from "../../services/movies-api";
+import styles from "./MovieDetails.module.css";
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -35,7 +36,7 @@ export const MovieDetails = () => {
       </Link>
       {loading && <Loader />}
       {movieInfo && (
-        <div className="movieDetails">
+        <div className={styles.movieDetails}>
           <img
             src={"https://image.tmdb.org/t/p/w500" + movieInfo.poster_path}
             alt={movieInfo.original_title}
@@ -43,9 +44,10 @@ export const MovieDetails = () => {
           />
           <div>
             <h1>{movieInfo.title}</h1>
-            <p>User score: {movieInfo.vote_average * 10}%</p>
+            <p>User score: {(movieInfo.vote_average * 10).toFixed(2)}%</p>
             <h2>Overview</h2>
             <p>{`${movieInfo.overview}`}</p>
+            <h2>Genres</h2>
             <ul>
               {movieInfo.genres.map((genre) => (
                 <li key={genre.id}>{genre.name}</li>
