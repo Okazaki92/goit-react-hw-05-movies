@@ -21,6 +21,7 @@ export const Navigation = () => {
       >
         Movies
       </NavLink>
+      <hr />
     </nav>
   );
 };
